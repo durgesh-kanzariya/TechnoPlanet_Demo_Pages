@@ -44,7 +44,7 @@ class _LoginState extends State<Login> {
                 ),
                 const SizedBox(height: 30),
                 _buildToggleSwitch(),
-                const SizedBox(height: 120),
+                const SizedBox(height: 110),
                 const Text(
                   'Welcome Back  👋',
                   style: TextStyle(
@@ -280,7 +280,7 @@ class _LoginState extends State<Login> {
       child: TextButton(
         onPressed: () {},
         style: TextButton.styleFrom(
-          backgroundColor: const Color(0xfff5f5f5),
+          backgroundColor: const Color(0xff4aabff),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
@@ -288,7 +288,7 @@ class _LoginState extends State<Login> {
         child: const Text(
           'Submit',
           style: TextStyle(
-            color: Color(0xff9e9e9e),
+            color: Colors.white,
             fontSize: 16,
             fontWeight: FontWeight.w500,
           ),
@@ -304,12 +304,11 @@ class _LoginState extends State<Login> {
       child: TextButton(
         onPressed: () {},
         style: TextButton.styleFrom(
-          backgroundColor: Colors.white,
+          backgroundColor: Color(0xfff5f5f5),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
           side: BorderSide.none,
-          shadowColor: const Color(0x26A7A9B7),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

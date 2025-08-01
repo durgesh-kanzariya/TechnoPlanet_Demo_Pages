@@ -47,7 +47,7 @@ class _RegistrationState extends State<Registration> {
                   ),
                   const SizedBox(height: 30),
                   _buildToggleSwitch(),
-                  const SizedBox(height: 48),
+                  const SizedBox(height: 38),
                   const Text(
                     'Hello there 👋',
                     style: TextStyle(
@@ -63,21 +63,21 @@ class _RegistrationState extends State<Registration> {
                     controller: nameController,
                     isPassword: false,
                   ),
-                  const SizedBox(height: 19),
+                  const SizedBox(height: 15),
                   _buildInputField(
                     hint: 'Email',
                     icon: Icons.email_outlined,
                     controller: emailController,
                     isPassword: false,
                   ),
-                  const SizedBox(height: 19),
+                  const SizedBox(height: 15),
                   _buildPasswordField(
                     'Password',
                     passwordController,
                     obscurePassword,
                     () => setState(() => obscurePassword = !obscurePassword),
                   ),
-                  const SizedBox(height: 19),
+                  const SizedBox(height: 15),
                   _buildPasswordField(
                     'Confirm Password',
                     confirmPasswordController,
@@ -90,7 +90,7 @@ class _RegistrationState extends State<Registration> {
                   _buildRememberMe(),
                   const SizedBox(height: 20),
                   _buildSubmitButton(),
-                  const SizedBox(height: 54),
+                  const SizedBox(height: 30),
                   _buildGoogleButton(),
                   const SizedBox(height: 20),
                 ],
@@ -276,7 +276,7 @@ class _RegistrationState extends State<Registration> {
       child: TextButton(
         onPressed: () {},
         style: TextButton.styleFrom(
-          backgroundColor: const Color(0xfff5f5f5),
+          backgroundColor: const Color(0xff4aabff),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
@@ -284,7 +284,7 @@ class _RegistrationState extends State<Registration> {
         child: const Text(
           'Submit',
           style: TextStyle(
-            color: Color(0xff9e9e9e),
+            color: Colors.white,
             fontSize: 16,
             fontWeight: FontWeight.w500,
           ),
@@ -300,7 +300,7 @@ class _RegistrationState extends State<Registration> {
       child: TextButton(
         onPressed: () {},
         style: TextButton.styleFrom(
-          backgroundColor: Colors.white,
+          backgroundColor: Color(0xfff5f5f5),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
