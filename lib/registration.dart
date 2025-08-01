@@ -7,7 +7,9 @@ class Registration extends StatefulWidget {
   State<Registration> createState() => _RegistrationState();
 }
 
-class _RegistrationState extends State<Registration> {
+class _RegistrationState extends State<Registration>
+    with TickerProviderStateMixin {
+  // Add mixin here
   bool obscurePassword = true;
   bool obscureConfirmPassword = true;
   bool rememberMe = false;
@@ -16,14 +18,44 @@ class _RegistrationState extends State<Registration> {
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
 
+  // Animation controller
+  late AnimationController _animationController;
+  late Animation<double> _opacityAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+    );
+    _opacityAnimation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: const Interval(0.4, 1, curve: Curves.easeOut),
+      ), // Added missing parenthesis here
+    );
+
+    // Start animation after page builds
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _animationController.forward();
+    });
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          // Background vector positioned at top center
-          Positioned(
+          Hero(
+            tag: 'background',
             child: Image.asset(
               "assets/vectors/Vector 4.png",
               fit: BoxFit.fitWidth,
@@ -37,61 +69,100 @@ class _RegistrationState extends State<Registration> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 54),
-                  const Text(
-                    'Techno Planet',
-                    style: TextStyle(
-                      color: Color(0xFF1E1E1E),
-                      fontSize: 36,
-                      fontWeight: FontWeight.w600,
+                  Hero(
+                    tag: 'title',
+                    child: Material(
+                      type: MaterialType.transparency,
+                      child: Text(
+                        'Techno Planet',
+                        style: TextStyle(
+                          color: const Color(0xFF1E1E1E),
+                          fontSize: 36,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 30),
-                  _buildToggleSwitch(),
+                  Hero(
+                    tag: 'toggle',
+                    child: Material(
+                      type: MaterialType.transparency,
+                      child: _buildToggleSwitch(),
+                    ),
+                  ),
                   const SizedBox(height: 38),
-                  const Text(
-                    'Hello there 👋',
-                    style: TextStyle(
-                      color: Color(0xFF151A1D),
-                      fontSize: 24,
-                      fontWeight: FontWeight.w500,
+                  FadeTransition(
+                    opacity: _opacityAnimation,
+                    child: const Text(
+                      'Hello there 👋',
+                      style: TextStyle(
+                        color: Color(0xFF151A1D),
+                        fontSize: 24,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 32),
-                  _buildInputField(
-                    hint: 'Name',
-                    icon: Icons.person_outlined,
-                    controller: nameController,
-                    isPassword: false,
+                  _buildAnimatedField(
+                    index: 0,
+                    child: _buildInputField(
+                      hint: 'Name',
+                      icon: Icons.person_outlined,
+                      controller: nameController,
+                      isPassword: false,
+                    ),
                   ),
                   const SizedBox(height: 15),
-                  _buildInputField(
-                    hint: 'Email',
-                    icon: Icons.email_outlined,
-                    controller: emailController,
-                    isPassword: false,
+                  _buildAnimatedField(
+                    index: 1,
+                    child: _buildInputField(
+                      hint: 'Email',
+                      icon: Icons.email_outlined,
+                      controller: emailController,
+                      isPassword: false,
+                    ),
                   ),
                   const SizedBox(height: 15),
-                  _buildPasswordField(
-                    'Password',
-                    passwordController,
-                    obscurePassword,
-                    () => setState(() => obscurePassword = !obscurePassword),
+                  _buildAnimatedField(
+                    index: 2,
+                    child: _buildPasswordField(
+                      'Password',
+                      passwordController,
+                      obscurePassword,
+                      () => setState(() => obscurePassword = !obscurePassword),
+                    ),
                   ),
                   const SizedBox(height: 15),
-                  _buildPasswordField(
-                    'Confirm Password',
-                    confirmPasswordController,
-                    obscureConfirmPassword,
-                    () => setState(
-                      () => obscureConfirmPassword = !obscureConfirmPassword,
+                  _buildAnimatedField(
+                    index: 3,
+                    child: _buildPasswordField(
+                      'Confirm Password',
+                      confirmPasswordController,
+                      obscureConfirmPassword,
+                      () => setState(
+                        () => obscureConfirmPassword = !obscureConfirmPassword,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 10),
-                  _buildRememberMe(),
+                  _buildAnimatedField(index: 4, child: _buildRememberMe()),
                   const SizedBox(height: 20),
-                  _buildSubmitButton(),
+                  Hero(
+                    tag: 'submit',
+                    child: Material(
+                      type: MaterialType.transparency,
+                      child: _buildSubmitButton(),
+                    ),
+                  ),
                   const SizedBox(height: 30),
-                  _buildGoogleButton(),
+                  Hero(
+                    tag: 'google',
+                    child: Material(
+                      type: MaterialType.transparency,
+                      child: _buildGoogleButton(),
+                    ),
+                  ),
                   const SizedBox(height: 20),
                 ],
               ),
@@ -99,6 +170,30 @@ class _RegistrationState extends State<Registration> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildAnimatedField({required int index, required Widget child}) {
+    return AnimatedBuilder(
+      animation: _animationController,
+      builder: (context, child) {
+        final animation = CurvedAnimation(
+          parent: _animationController,
+          curve: Interval(0.1 + 0.15 * index, 1.0, curve: Curves.easeOut),
+        );
+
+        return FadeTransition(
+          opacity: animation,
+          child: SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(0, 0.2),
+              end: Offset.zero,
+            ).animate(animation),
+            child: child,
+          ),
+        );
+      },
+      child: child,
     );
   }
 

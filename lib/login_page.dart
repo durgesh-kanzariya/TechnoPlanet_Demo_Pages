@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_tutorials/registration.dart';
+import 'package:flutter_widget_tutorials/smart_transition.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -19,8 +20,8 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // Background vector positioned at top center
-        Positioned(
+        Hero(
+          tag: 'background',
           child: Image.asset(
             "assets/vectors/Vector 4.png",
             fit: BoxFit.fitWidth,
@@ -34,21 +35,33 @@ class _LoginState extends State<Login> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 54),
-                const Text(
-                  'Techno Planet',
-                  style: TextStyle(
-                    color: Color(0xFF1E1E1E),
-                    fontSize: 36,
-                    fontWeight: FontWeight.w600,
+                Hero(
+                  tag: 'title',
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: Text(
+                      'Techno Planet',
+                      style: TextStyle(
+                        color: const Color(0xFF1E1E1E),
+                        fontSize: 36,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 30),
-                _buildToggleSwitch(),
+                Hero(
+                  tag: 'toggle',
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: _buildToggleSwitch(),
+                  ),
+                ),
                 const SizedBox(height: 110),
-                const Text(
+                Text(
                   'Welcome Back  👋',
                   style: TextStyle(
-                    color: Color(0xFF151A1D),
+                    color: const Color(0xFF151A1D),
                     fontSize: 24,
                     fontWeight: FontWeight.w500,
                   ),
@@ -65,9 +78,21 @@ class _LoginState extends State<Login> {
                 const SizedBox(height: 20),
                 _buildRememberForgot(),
                 const SizedBox(height: 60),
-                _buildSubmitButton(),
+                Hero(
+                  tag: 'submit',
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: _buildSubmitButton(),
+                  ),
+                ),
                 const SizedBox(height: 28),
-                _buildGoogleButton(),
+                Hero(
+                  tag: 'google',
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: _buildGoogleButton(),
+                  ),
+                ),
                 const SizedBox(height: 20),
               ],
             ),
@@ -130,9 +155,7 @@ class _LoginState extends State<Login> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => const Registration(),
-                      ),
+                      SmartTransitionRoute(page: const Registration()),
                     );
                   },
                   child: Center(
