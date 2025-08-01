@@ -55,6 +55,19 @@ class _RegistrationState extends State<Registration>
       body: Stack(
         children: [
           Hero(
+            flightShuttleBuilder:
+                (
+                  BuildContext flightContext,
+                  Animation<double> animation,
+                  HeroFlightDirection flightDirection,
+                  BuildContext fromHeroContext,
+                  BuildContext toHeroContext,
+                ) {
+                  return Material(
+                    type: MaterialType.transparency,
+                    child: toHeroContext.widget,
+                  );
+                },
             tag: 'background',
             child: Image.asset(
               "assets/vectors/Vector 4.png",
@@ -70,6 +83,19 @@ class _RegistrationState extends State<Registration>
                 children: [
                   const SizedBox(height: 54),
                   Hero(
+                    flightShuttleBuilder:
+                        (
+                          BuildContext flightContext,
+                          Animation<double> animation,
+                          HeroFlightDirection flightDirection,
+                          BuildContext fromHeroContext,
+                          BuildContext toHeroContext,
+                        ) {
+                          return Material(
+                            type: MaterialType.transparency,
+                            child: toHeroContext.widget,
+                          );
+                        },
                     tag: 'title',
                     child: Material(
                       type: MaterialType.transparency,
@@ -85,6 +111,19 @@ class _RegistrationState extends State<Registration>
                   ),
                   const SizedBox(height: 30),
                   Hero(
+                    flightShuttleBuilder:
+                        (
+                          BuildContext flightContext,
+                          Animation<double> animation,
+                          HeroFlightDirection flightDirection,
+                          BuildContext fromHeroContext,
+                          BuildContext toHeroContext,
+                        ) {
+                          return Material(
+                            type: MaterialType.transparency,
+                            child: toHeroContext.widget,
+                          );
+                        },
                     tag: 'toggle',
                     child: Material(
                       type: MaterialType.transparency,
@@ -149,6 +188,19 @@ class _RegistrationState extends State<Registration>
                   _buildAnimatedField(index: 4, child: _buildRememberMe()),
                   const SizedBox(height: 20),
                   Hero(
+                    flightShuttleBuilder:
+                        (
+                          BuildContext flightContext,
+                          Animation<double> animation,
+                          HeroFlightDirection flightDirection,
+                          BuildContext fromHeroContext,
+                          BuildContext toHeroContext,
+                        ) {
+                          return Material(
+                            type: MaterialType.transparency,
+                            child: toHeroContext.widget,
+                          );
+                        },
                     tag: 'submit',
                     child: Material(
                       type: MaterialType.transparency,
@@ -157,6 +209,19 @@ class _RegistrationState extends State<Registration>
                   ),
                   const SizedBox(height: 30),
                   Hero(
+                    flightShuttleBuilder:
+                        (
+                          BuildContext flightContext,
+                          Animation<double> animation,
+                          HeroFlightDirection flightDirection,
+                          BuildContext fromHeroContext,
+                          BuildContext toHeroContext,
+                        ) {
+                          return Material(
+                            type: MaterialType.transparency,
+                            child: toHeroContext.widget,
+                          );
+                        },
                     tag: 'google',
                     child: Material(
                       type: MaterialType.transparency,

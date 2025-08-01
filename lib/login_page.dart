@@ -21,6 +21,19 @@ class _LoginState extends State<Login> {
     return Stack(
       children: [
         Hero(
+          flightShuttleBuilder:
+              (
+                BuildContext flightContext,
+                Animation<double> animation,
+                HeroFlightDirection flightDirection,
+                BuildContext fromHeroContext,
+                BuildContext toHeroContext,
+              ) {
+                return Material(
+                  type: MaterialType.transparency,
+                  child: toHeroContext.widget,
+                );
+              },
           tag: 'background',
           child: Image.asset(
             "assets/vectors/Vector 4.png",
@@ -36,6 +49,19 @@ class _LoginState extends State<Login> {
               children: [
                 const SizedBox(height: 54),
                 Hero(
+                  flightShuttleBuilder:
+                      (
+                        BuildContext flightContext,
+                        Animation<double> animation,
+                        HeroFlightDirection flightDirection,
+                        BuildContext fromHeroContext,
+                        BuildContext toHeroContext,
+                      ) {
+                        return Material(
+                          type: MaterialType.transparency,
+                          child: toHeroContext.widget,
+                        );
+                      },
                   tag: 'title',
                   child: Material(
                     type: MaterialType.transparency,
@@ -51,6 +77,19 @@ class _LoginState extends State<Login> {
                 ),
                 const SizedBox(height: 30),
                 Hero(
+                  flightShuttleBuilder:
+                      (
+                        BuildContext flightContext,
+                        Animation<double> animation,
+                        HeroFlightDirection flightDirection,
+                        BuildContext fromHeroContext,
+                        BuildContext toHeroContext,
+                      ) {
+                        return Material(
+                          type: MaterialType.transparency,
+                          child: toHeroContext.widget,
+                        );
+                      },
                   tag: 'toggle',
                   child: Material(
                     type: MaterialType.transparency,
@@ -79,6 +118,19 @@ class _LoginState extends State<Login> {
                 _buildRememberForgot(),
                 const SizedBox(height: 60),
                 Hero(
+                  flightShuttleBuilder:
+                      (
+                        BuildContext flightContext,
+                        Animation<double> animation,
+                        HeroFlightDirection flightDirection,
+                        BuildContext fromHeroContext,
+                        BuildContext toHeroContext,
+                      ) {
+                        return Material(
+                          type: MaterialType.transparency,
+                          child: toHeroContext.widget,
+                        );
+                      },
                   tag: 'submit',
                   child: Material(
                     type: MaterialType.transparency,
@@ -87,6 +139,19 @@ class _LoginState extends State<Login> {
                 ),
                 const SizedBox(height: 28),
                 Hero(
+                  flightShuttleBuilder:
+                      (
+                        BuildContext flightContext,
+                        Animation<double> animation,
+                        HeroFlightDirection flightDirection,
+                        BuildContext fromHeroContext,
+                        BuildContext toHeroContext,
+                      ) {
+                        return Material(
+                          type: MaterialType.transparency,
+                          child: toHeroContext.widget,
+                        );
+                      },
                   tag: 'google',
                   child: Material(
                     type: MaterialType.transparency,
