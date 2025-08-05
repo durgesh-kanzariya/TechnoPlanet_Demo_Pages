@@ -104,10 +104,9 @@ class StudentDetails extends StatelessWidget {
       padding: const EdgeInsets.only(top: 5.0),
       child: Column(
         children: [
-          CircleAvatar(
-            radius: 41,
-            backgroundColor: Color(0xFFD9D9D9),
-            child: Icon(Icons.person, size: 60, color: Colors.grey),
+          ClipRRect(
+            borderRadius: BorderRadiusGeometry.circular(100),
+            child: Image.asset("assets/profile_image.png", fit: BoxFit.fill),
           ),
           const SizedBox(height: 16),
           const Text(
@@ -126,7 +125,7 @@ class StudentDetails extends StatelessWidget {
               color: Color(0xB5171C2E),
               fontSize: 20,
               fontFamily: 'Outfit',
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w500,
             ),
           ),
           const SizedBox(height: 5),
@@ -169,7 +168,7 @@ class StudentDetails extends StatelessWidget {
 
   Widget _buildDetailColumn(String title, String value) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8.5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -214,23 +213,38 @@ class StudentDetails extends StatelessWidget {
   Widget _buildInputField() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
       decoration: BoxDecoration(
         color: const Color(0xFFDEEAFA),
         borderRadius: BorderRadius.circular(8),
         border: Border.all(color: const Color(0xFF3C5AF6), width: 2),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          const Opacity(
+            opacity: 0,
+            child: IconButton(
+              icon: Icon(Icons.chevron_left, size: 35.0),
+              onPressed: null,
+            ),
+          ),
           Text(
             'Declare Wiener',
             style: TextStyle(
               color: Color(0xF43C5AF6),
               fontSize: 16,
               fontFamily: 'Outfit',
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w700,
             ),
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.keyboard_arrow_down,
+              size: 35.0,
+              color: Color(0xF43C5AF6),
+            ),
+            onPressed: null,
           ),
         ],
       ),
@@ -239,9 +253,8 @@ class StudentDetails extends StatelessWidget {
 
   Widget _buildRemoveButton() {
     return Container(
-      width: 295,
       margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-      padding: const EdgeInsets.symmetric(vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
       decoration: BoxDecoration(
         color: const Color(0xFF3C5AF6),
         borderRadius: BorderRadius.circular(8),

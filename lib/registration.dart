@@ -52,31 +52,31 @@ class _RegistrationState extends State<Registration>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          Hero(
-            flightShuttleBuilder:
-                (
-                  BuildContext flightContext,
-                  Animation<double> animation,
-                  HeroFlightDirection flightDirection,
-                  BuildContext fromHeroContext,
-                  BuildContext toHeroContext,
-                ) {
-                  return Material(
-                    type: MaterialType.transparency,
-                    child: toHeroContext.widget,
-                  );
-                },
-            tag: 'background',
-            child: Image.asset(
-              "assets/vectors/Vector 4.png",
-              fit: BoxFit.fitWidth,
-              width: double.infinity,
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Hero(
+              flightShuttleBuilder:
+                  (
+                    BuildContext flightContext,
+                    Animation<double> animation,
+                    HeroFlightDirection flightDirection,
+                    BuildContext fromHeroContext,
+                    BuildContext toHeroContext,
+                  ) {
+                    return Material(
+                      type: MaterialType.transparency,
+                      child: toHeroContext.widget,
+                    );
+                  },
+              tag: 'background',
+              child: Image.asset(
+                "assets/vectors/Vector 4.png",
+                fit: BoxFit.fitWidth,
+                width: double.infinity,
+              ),
             ),
-          ),
-          SingleChildScrollView(
-            child: Padding(
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -228,12 +228,12 @@ class _RegistrationState extends State<Registration>
                       child: _buildGoogleButton(),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 40),
                 ],
               ),
-            ),
-          ),
-        ],
+            ),            
+          ],
+        ),
       ),
     );
   }

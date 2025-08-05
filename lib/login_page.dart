@@ -19,154 +19,150 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          Hero(
-            flightShuttleBuilder:
-                (
-                  BuildContext flightContext,
-                  Animation<double> animation,
-                  HeroFlightDirection flightDirection,
-                  BuildContext fromHeroContext,
-                  BuildContext toHeroContext,
-                ) {
-                  return Material(
-                    type: MaterialType.transparency,
-                    child: toHeroContext.widget,
-                  );
-                },
-            tag: 'background',
-            child: Image.asset(
-              "assets/vectors/Vector 4.png",
-              fit: BoxFit.fitWidth,
-              width: double.infinity,
-            ),
+    return Stack(
+      children: [
+        Hero(
+          flightShuttleBuilder:
+              (
+                BuildContext flightContext,
+                Animation<double> animation,
+                HeroFlightDirection flightDirection,
+                BuildContext fromHeroContext,
+                BuildContext toHeroContext,
+              ) {
+                return Material(
+                  type: MaterialType.transparency,
+                  child: toHeroContext.widget,
+                );
+              },
+          tag: 'background',
+          child: Image.asset(
+            "assets/vectors/Vector 4.png",
+            fit: BoxFit.fitWidth,
+            width: double.infinity,
           ),
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 54),
-                  Hero(
-                    flightShuttleBuilder:
-                        (
-                          BuildContext flightContext,
-                          Animation<double> animation,
-                          HeroFlightDirection flightDirection,
-                          BuildContext fromHeroContext,
-                          BuildContext toHeroContext,
-                        ) {
-                          return Material(
-                            type: MaterialType.transparency,
-                            child: toHeroContext.widget,
-                          );
-                        },
-                    tag: 'title',
-                    child: Material(
-                      type: MaterialType.transparency,
-                      child: Text(
-                        'Techno Planet',
-                        style: TextStyle(
-                          color: const Color(0xFF1E1E1E),
-                          fontSize: 36,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 30),
-                  Hero(
-                    flightShuttleBuilder:
-                        (
-                          BuildContext flightContext,
-                          Animation<double> animation,
-                          HeroFlightDirection flightDirection,
-                          BuildContext fromHeroContext,
-                          BuildContext toHeroContext,
-                        ) {
-                          return Material(
-                            type: MaterialType.transparency,
-                            child: toHeroContext.widget,
-                          );
-                        },
-                    tag: 'toggle',
-                    child: Material(
-                      type: MaterialType.transparency,
-                      child: _buildToggleSwitch(),
-                    ),
-                  ),
-                  const SizedBox(height: 110),
-                  Text(
-                    'Welcome Back  👋',
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 54),
+              Hero(
+                flightShuttleBuilder:
+                    (
+                      BuildContext flightContext,
+                      Animation<double> animation,
+                      HeroFlightDirection flightDirection,
+                      BuildContext fromHeroContext,
+                      BuildContext toHeroContext,
+                    ) {
+                      return Material(
+                        type: MaterialType.transparency,
+                        child: toHeroContext.widget,
+                      );
+                    },
+                tag: 'title',
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: Text(
+                    'Techno Planet',
                     style: TextStyle(
-                      color: const Color(0xFF151A1D),
-                      fontSize: 24,
-                      fontWeight: FontWeight.w500,
+                      color: const Color(0xFF1E1E1E),
+                      fontSize: 36,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 35),
-                  _buildInputField(
-                    hint: 'Email',
-                    icon: Icons.email_outlined,
-                    controller: emailController,
-                    isPassword: false,
-                  ),
-                  const SizedBox(height: 24),
-                  _buildPasswordField(),
-                  const SizedBox(height: 20),
-                  _buildRememberForgot(),
-                  const SizedBox(height: 60),
-                  Hero(
-                    flightShuttleBuilder:
-                        (
-                          BuildContext flightContext,
-                          Animation<double> animation,
-                          HeroFlightDirection flightDirection,
-                          BuildContext fromHeroContext,
-                          BuildContext toHeroContext,
-                        ) {
-                          return Material(
-                            type: MaterialType.transparency,
-                            child: toHeroContext.widget,
-                          );
-                        },
-                    tag: 'submit',
-                    child: Material(
-                      type: MaterialType.transparency,
-                      child: _buildSubmitButton(),
-                    ),
-                  ),
-                  const SizedBox(height: 28),
-                  Hero(
-                    flightShuttleBuilder:
-                        (
-                          BuildContext flightContext,
-                          Animation<double> animation,
-                          HeroFlightDirection flightDirection,
-                          BuildContext fromHeroContext,
-                          BuildContext toHeroContext,
-                        ) {
-                          return Material(
-                            type: MaterialType.transparency,
-                            child: toHeroContext.widget,
-                          );
-                        },
-                    tag: 'google',
-                    child: Material(
-                      type: MaterialType.transparency,
-                      child: _buildGoogleButton(),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                ],
+                ),
               ),
-            ),
+              const SizedBox(height: 30),
+              Hero(
+                flightShuttleBuilder:
+                    (
+                      BuildContext flightContext,
+                      Animation<double> animation,
+                      HeroFlightDirection flightDirection,
+                      BuildContext fromHeroContext,
+                      BuildContext toHeroContext,
+                    ) {
+                      return Material(
+                        type: MaterialType.transparency,
+                        child: toHeroContext.widget,
+                      );
+                    },
+                tag: 'toggle',
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: _buildToggleSwitch(),
+                ),
+              ),
+              const SizedBox(height: 110),
+              Text(
+                'Welcome Back  👋',
+                style: TextStyle(
+                  color: const Color(0xFF151A1D),
+                  fontSize: 24,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              const SizedBox(height: 35),
+              _buildInputField(
+                hint: 'Email',
+                icon: Icons.email_outlined,
+                controller: emailController,
+                isPassword: false,
+              ),
+              const SizedBox(height: 24),
+              _buildPasswordField(),
+              const SizedBox(height: 20),
+              _buildRememberForgot(),
+              const SizedBox(height: 60),
+              Hero(
+                flightShuttleBuilder:
+                    (
+                      BuildContext flightContext,
+                      Animation<double> animation,
+                      HeroFlightDirection flightDirection,
+                      BuildContext fromHeroContext,
+                      BuildContext toHeroContext,
+                    ) {
+                      return Material(
+                        type: MaterialType.transparency,
+                        child: toHeroContext.widget,
+                      );
+                    },
+                tag: 'submit',
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: _buildSubmitButton(),
+                ),
+              ),
+              const SizedBox(height: 28),
+              Hero(
+                flightShuttleBuilder:
+                    (
+                      BuildContext flightContext,
+                      Animation<double> animation,
+                      HeroFlightDirection flightDirection,
+                      BuildContext fromHeroContext,
+                      BuildContext toHeroContext,
+                    ) {
+                      return Material(
+                        type: MaterialType.transparency,
+                        child: toHeroContext.widget,
+                      );
+                    },
+                tag: 'google',
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: _buildGoogleButton(),
+                ),
+              ),
+              const SizedBox(height: 40),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
