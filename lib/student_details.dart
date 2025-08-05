@@ -33,7 +33,7 @@ class StudentDetails extends StatelessWidget {
                   child: Column(
                     children: [
                       Container(
-                        padding: const EdgeInsets.only(top: 45),
+                        padding: const EdgeInsets.only(top: 40),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -41,11 +41,13 @@ class StudentDetails extends StatelessWidget {
                             Positioned(
                               left: 0,
                               child: IconButton(
-                                icon: const Icon(Icons.chevron_left),
+                                icon: const Icon(
+                                  Icons.chevron_left_sharp,
+                                  size: 35.0,
+                                ),
                                 onPressed: () => Navigator.pop(context),
                               ),
                             ),
-
                             // Centered title text
                             const Expanded(
                               child: Center(
@@ -65,7 +67,7 @@ class StudentDetails extends StatelessWidget {
                             const Opacity(
                               opacity: 0,
                               child: IconButton(
-                                icon: Icon(Icons.chevron_left),
+                                icon: Icon(Icons.chevron_left, size: 35.0),
                                 onPressed: null,
                               ),
                             ),
@@ -99,35 +101,13 @@ class StudentDetails extends StatelessWidget {
 
   Widget _buildProfileSection() {
     return Padding(
-      padding: const EdgeInsets.only(top: 30),
+      padding: const EdgeInsets.only(top: 5.0),
       child: Column(
         children: [
-          Stack(
-            alignment: Alignment.bottomRight,
-            children: [
-              const CircleAvatar(
-                radius: 41,
-                backgroundColor: Color(0xFFD9D9D9),
-                child: Icon(Icons.person, size: 60, color: Colors.grey),
-              ),
-              Container(
-                padding: const EdgeInsets.all(4),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Container(
-                  width: 24,
-                  height: 24,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://example.com/edit.png"),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
-            ],
+          CircleAvatar(
+            radius: 41,
+            backgroundColor: Color(0xFFD9D9D9),
+            child: Icon(Icons.person, size: 60, color: Colors.grey),
           ),
           const SizedBox(height: 16),
           const Text(
@@ -149,7 +129,7 @@ class StudentDetails extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 5),
         ],
       ),
     );
@@ -171,45 +151,52 @@ class StudentDetails extends StatelessWidget {
       ),
       child: Column(
         children: [
-          _buildDetailRow('Name', 'Rku Collage'),
+          _buildDetailColumn('Name', 'Rku Collage'),
           _buildDivider(),
-          _buildDetailRow('E-mail', 'rku@rku.ac.in'),
+          _buildDetailColumn('E-mail', 'rku@rku.ac.in'),
           _buildDivider(),
-          _buildDetailRow('Department', 'B.Tech'),
+          _buildDetailColumn('Department', 'B.Tech'),
           _buildDivider(),
-          _buildDetailRow('Branch', 'CE'),
+          _buildDetailColumn('Branch', 'CE'),
           _buildDivider(),
-          _buildDetailRow('Sem', '3rd'),
+          _buildDetailColumn('Sem', '3rd'),
           _buildDivider(),
-          _buildDetailRow('Div', 'A'),
+          _buildDetailColumn('Div', 'A'),
         ],
       ),
     );
   }
 
-  Widget _buildDetailRow(String title, String value) {
+  Widget _buildDetailColumn(String title, String value) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: const TextStyle(
-              color: Color(0xFF171D2E),
-              fontSize: 14,
-              fontFamily: 'Outfit',
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          Text(
-            value,
-            style: TextStyle(
-              color: Colors.black.withOpacity(0.5),
-              fontSize: 14,
-              fontFamily: 'Outfit',
-              fontWeight: FontWeight.w500,
-            ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  color: Color(0xFF171D2E),
+                  fontSize: 16,
+                  fontFamily: 'Outfit',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              Text(
+                value,
+                style: TextStyle(
+                  color: Colors.black.withOpacity(0.5),
+                  fontSize: 14,
+                  fontFamily: 'Outfit',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -220,7 +207,7 @@ class StudentDetails extends StatelessWidget {
     return Container(
       height: 1,
       margin: const EdgeInsets.symmetric(horizontal: 16),
-      color: Colors.black.withOpacity(0.1),
+      color: Colors.black.withOpacity(0.07),
     );
   }
 
