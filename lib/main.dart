@@ -13,10 +13,7 @@ class FigmaToCodeApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(scaffoldBackgroundColor: Colors.white),
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        body: SingleChildScrollView(child: Login()),
-      ),
+      home: Login(),
     );
   }
 }

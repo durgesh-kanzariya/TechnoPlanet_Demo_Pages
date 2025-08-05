@@ -269,60 +269,69 @@ class _RegistrationState extends State<Registration>
         color: const Color(0xFFF3F4F7),
         borderRadius: BorderRadius.circular(50),
       ),
-      child: Stack(
-        children: [
-          AnimatedPositioned(
-            duration: const Duration(milliseconds: 300),
-            left: 170,
-            top: 4,
-            child: Container(
-              width: 190,
-              height: 42,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(50),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Color(0x26A7A9B7),
-                    blurRadius: 40,
-                    offset: Offset(0, 4),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Row(
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final totalWidth = constraints.maxWidth;
+          final tabWidth = totalWidth / 2;
+          final whiteBackgroundWidth =
+              tabWidth - 8; // Account for 4px margin on each side
+
+          return Stack(
             children: [
-              Expanded(
-                child: GestureDetector(
-                  onTap: () => Navigator.pop(context),
-                  child: Center(
-                    child: Text(
-                      'Login',
-                      style: TextStyle(
-                        color: const Color(0xFFA7A9B7),
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
+              AnimatedPositioned(
+                duration: const Duration(milliseconds: 300),
+                left: tabWidth + 4,
+                top: 4,
+                child: Container(
+                  width: whiteBackgroundWidth,
+                  height: 42,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(50),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color(0x26A7A9B7),
+                        blurRadius: 40,
+                        offset: Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: Center(
+                        child: Text(
+                          'Login',
+                          style: TextStyle(
+                            color: const Color(0xFFA7A9B7),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ),
-              Expanded(
-                child: Center(
-                  child: Text(
-                    'Registration',
-                    style: TextStyle(
-                      color: const Color(0xFF191D31),
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
+                  Expanded(
+                    child: Center(
+                      child: Text(
+                        'Registration',
+                        style: TextStyle(
+                          color: const Color(0xFF191D31),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
                     ),
                   ),
-                ),
+                ],
               ),
             ],
-          ),
-        ],
+          );
+        },
       ),
     );
   }
